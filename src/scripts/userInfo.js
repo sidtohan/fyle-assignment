@@ -27,7 +27,7 @@ const imageElement = (image, url) => {
 }
 
 // Element for User Data
-const userData = ({data}) => {
+const userData = (data) => {
     const dataDiv = document.createElement("div");
     dataDiv.classList.add("user-data");
 
@@ -70,7 +70,7 @@ const userData = ({data}) => {
 const userInfo = ({data}) => {
     const userInfoDiv = document.createElement("div");
     userInfoDiv.appendChild(imageElement(data.image, data["html_url"]));
-    userInfoDiv.appendChild(userData);
+    userInfoDiv.appendChild(userData(data));
     userInfoDiv.classList.add("user-info")
 
     return userInfoDiv;
