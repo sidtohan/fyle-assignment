@@ -33,7 +33,7 @@ const repoCard = (repo) => {
     return repoCardDiv;
 }
 
-const pageNavigation = (totalPages) => {
+const pageNavigation = (totalPages, setNewData) => {
     let currentButton = null;
     const navigationDiv = document.createElement("nav");
     navigationDiv.classList.add("repo-navigator");
@@ -44,6 +44,12 @@ const pageNavigation = (totalPages) => {
     leftArrowIcon.classList.add("icon");
     leftButton.classList.add("repo-navigation-button");
     leftButton.classList.add("left-nav");
+    leftButton.onclick = async (e) => {
+        e.preventDefault();
+        if(currentButton === leftButton)
+            return;
+        await setNewData(1);
+    }
     leftButton.appendChild(leftArrowIcon);
 
     const rightButton = document.createElement("button");
@@ -53,6 +59,12 @@ const pageNavigation = (totalPages) => {
     rightButton.classList.add("repo-navigation-button");
     rightButton.appendChild(rightArrowIcon);
     rightButton.classList.add("right-nav");
+    rightButton.onclick = async (e) => {
+        e.preventDefault();
+        if(currentButton === leftButton)
+            return;
+        await setNewData(totalPages);
+    }
     rightButton.classList.add("repo-navigation-button");
 
     navigationDiv.appendChild(leftButton);
@@ -65,14 +77,11 @@ const pageNavigation = (totalPages) => {
             currentButton = pageButton;
         }
         pageButton.textContent = pg;
-        pageButton.onclick = (e) => {
+        pageButton.onclick = async (e) => {
             e.preventDefault();
             if(currentButton == pageButton)
                 return;
-            currentButton.classList.remove("active");
-            currentButton = pageButton;
-            currentButton.classList.add("active");
-            page = pg;
+            await setNewData(pg);
         }
         navigationDiv.appendChild(pageButton);
     }
@@ -81,18 +90,33 @@ const pageNavigation = (totalPages) => {
     return navigationDiv;
 }
 
-const userRepos = async (name, totalRepos) => {
-    const data = await getPageData(name, page, limit);
-    const repos = data.data;
-    const totalPages = Math.ceil(totalRepos / limit);
-    const repoDisplay = document.createElement("div");
-    repoDisplay.classList.add("user-repos");
-
+const populateRepos = (repoDisplay, repos, totalPages, setNewData) => {
     repos.forEach(repo => {
         repoDisplay.appendChild(repoCard(repo));
     })
 
-    repoDisplay.appendChild(pageNavigation(totalPages));
+    repoDisplay.appendChild(pageNavigation(totalPages, setNewData));
+}
+const userRepos = async (name, totalRepos) => {
+    // Init
+    let data = await getPageData(name, page, limit);
+    let repos = data.data;
+    let totalPages = Math.ceil(totalRepos / limit);
+
+    // Repo Div
+    const repoDisplay = document.createElement("div");
+    repoDisplay.classList.add("user-repos");
+
+    // Update data
+    const setNewData = async (newPage) => {
+        const newData = await getPageData(name, newPage, limit);
+        const newRepos = newData.data;
+        repoDisplay.innerHTML = ``;
+        page = newPage;
+        populateRepos(repoDisplay, newRepos, totalPages, setNewData);
+    }
+
+    populateRepos(repoDisplay, repos, totalPages, setNewData);
     return repoDisplay;
 }
 

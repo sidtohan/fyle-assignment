@@ -54,6 +54,7 @@
     font-weight: 600;
     padding: 0.75rem 0.9rem;
     transition: 0.1s all ease-out;
+    cursor: pointer;
 }
 .repo-navigation-button > img{
     height: 0.75rem;
