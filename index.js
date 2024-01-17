@@ -5,6 +5,8 @@ import userInfo from "./src/scripts/userInfo.js";
 // CSS
 import "/src/styles/userInfo.css";
 import "/src/styles/main.css";
+import userRepos from "./src/scripts/userRepos.js";
+import list from "./src/scripts/temp.js";
 
 // Main Component
 const initializeApp = async () => {
@@ -12,6 +14,7 @@ const initializeApp = async () => {
     const userData = await fetchData("johnpapa");
 
     root.appendChild(userInfo(userData));
+    root.appendChild(userRepos(list))
 }
 
 window.onload = initializeApp();
