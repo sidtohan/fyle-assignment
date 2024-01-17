@@ -34,3 +34,32 @@
     padding: 0.5rem;
     border-radius: 0.25rem;
 }
+
+.repo-navigator{
+    grid-column: 1/3;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+.left-nav{
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+.right-nav{
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+.repo-navigation-button{
+    background-color: white;
+    border: 0.1rem solid #DADADA;
+    color:#428BCA;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem 0.9rem;
+    transition: 0.1s all ease-out;
+}
+.repo-navigation-button > img{
+    height: 0.75rem;
+}
+.repo-navigation-button.active{
+    background-color: #428BCA;
+    color: white;
+    border: 0.1rem solid #428BCA;
+}
