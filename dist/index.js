@@ -1,9 +1,12 @@
-import userInfo from "../src/scripts/userInfo";
+import fetchData from "../src/api/apiMain.js";
+import userInfo from "../src/scripts/userInfo.js";
 
 // Main Component
-const initializeApp = () => {
+const initializeApp = async () => {
     const root = document.querySelector("#root");
-    root.appendChild(userInfo);
+    const userData = await fetchData("sidtohan");
+
+    root.appendChild(userInfo(userData));
 }
 
 window.onload = initializeApp();
