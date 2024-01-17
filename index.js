@@ -1,12 +1,13 @@
 // JS Imports
 import fetchData from "./src/api/apiMain.js";
 import userInfo from "./src/scripts/userInfo.js";
+import userRepos from "./src/scripts/userRepos.js";
+import list from "./src/scripts/temp.js";
 
 // CSS
 import "/src/styles/userInfo.css";
 import "/src/styles/main.css";
-import userRepos from "./src/scripts/userRepos.js";
-import list from "./src/scripts/temp.js";
+import "/src/styles/userRepos.css"
 
 // Main Component
 const initializeApp = async () => {

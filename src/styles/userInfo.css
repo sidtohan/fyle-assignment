@@ -2,7 +2,6 @@
     display: flex;
     justify-content: left;
     gap: 6rem;
-    padding-left: 2rem;
     padding-right: 2rem;
 }
 .user-image{

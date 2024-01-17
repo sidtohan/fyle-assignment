@@ -1,5 +1,6 @@
 const repoCard = (repo) => {
     const repoCardDiv = document.createElement("div");
+    repoCardDiv.classList.add("repo-card");
 
     const repoHeading = document.createElement("h3");
     repoHeading.classList.add("repo-heading")
@@ -27,7 +28,7 @@ const repoCard = (repo) => {
 
 const userRepos = (repos) => {
     const repoDisplay = document.createElement("div");
-    repoDisplay.classList.add("repo-display");
+    repoDisplay.classList.add("user-repos");
 
     repos.forEach(repo => {
         repoDisplay.appendChild(repoCard(repo));
