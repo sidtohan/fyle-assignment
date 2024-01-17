@@ -9,7 +9,7 @@ import "/src/styles/main.css";
 // Main Component
 const initializeApp = async () => {
     const root = document.querySelector("#root");
-    const userData = await fetchData("sidtohan");
+    const userData = await fetchData("johnpapa");
 
     root.appendChild(userInfo(userData));
 }

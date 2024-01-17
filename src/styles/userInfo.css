@@ -1,8 +1,9 @@
 .user-info{
     display: flex;
     justify-content: left;
-    gap: 2rem;
+    gap: 6rem;
     padding-left: 2rem;
+    padding-right: 2rem;
 }
 .user-image{
     border-radius: 50%;
@@ -18,4 +19,27 @@
     height: 300px;
     width: 300px;
     padding: 0.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    gap: 1rem;
+}
+
+.user-name{
+    font-size: 2rem;
+}
+
+.icon{
+    display: inline-block;
+    height: 1.5rem;
+}
+
+.user-github-url, .user-location{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }

@@ -17,6 +17,7 @@ const imageElement = (image, url) => {
     
     const linkImg = document.createElement("img");
     linkImg.src = "src/assets/linkIcon.png";
+    linkImg.classList.add("icon");
 
     const linkText = document.createElement("span");
     linkText.innerHTML = `Twitter: <a href="${url}"}>${url}</a>`;
@@ -51,6 +52,7 @@ const userData = (data) => {
     
     const locImg = document.createElement("img");
     locImg.src = "src/assets/locationIcon.png";
+    locImg.classList.add("icon");
 
     const locTxt = document.createElement("span");
     locTxt.textContent = data.location;
