@@ -1,0 +1,21 @@
+.user-info{
+    display: flex;
+    justify-content: left;
+    gap: 2rem;
+    padding-left: 2rem;
+}
+.user-image{
+    border-radius: 50%;
+    display: block;
+    border: 0.1rem solid #EEEEEE;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+.user-image-border{
+    border-radius: 50%;
+    border: 0.2rem solid #EEEEEE;
+    height: 300px;
+    width: 300px;
+    padding: 0.3rem;
+}

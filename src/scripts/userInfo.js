@@ -3,16 +3,20 @@ const imageElement = (image, url) => {
     const imgDiv = document.createElement("div");
     imgDiv.classList.add("user-image-div");
 
+    const imgBorder = document.createElement("div");
+    imgBorder.classList.add("user-image-border");
+
     const newImg = document.createElement("img");
     newImg.src = image;
     newImg.classList.add("user-image");
-    
+    imgBorder.appendChild(newImg);
+
     // Link
     const github = document.createElement("div");
     github.classList.add("user-github-url");
     
     const linkImg = document.createElement("img");
-    linkImg.src = "../assets/linkIcon.png";
+    linkImg.src = "src/assets/linkIcon.png";
 
     const linkText = document.createElement("span");
     linkText.innerHTML = `Twitter: <a href="${url}"}>${url}</a>`;
@@ -21,7 +25,7 @@ const imageElement = (image, url) => {
     github.appendChild(linkText);
 
     // Main
-    imgDiv.appendChild(newImg);
+    imgDiv.appendChild(imgBorder);
     imgDiv.appendChild(github);
     return imgDiv;
 }
@@ -46,7 +50,7 @@ const userData = (data) => {
     location.classList.add("user-location");
     
     const locImg = document.createElement("img");
-    locImg.src = "../assets/locationIcon.png";
+    locImg.src = "src/assets/locationIcon.png";
 
     const locTxt = document.createElement("span");
     locTxt.textContent = data.location;
@@ -69,7 +73,7 @@ const userData = (data) => {
 }
 const userInfo = ({data}) => {
     const userInfoDiv = document.createElement("div");
-    userInfoDiv.appendChild(imageElement(data.image, data["html_url"]));
+    userInfoDiv.appendChild(imageElement(data.avatar_url, data.html_url));
     userInfoDiv.appendChild(userData(data));
     userInfoDiv.classList.add("user-info")
 
