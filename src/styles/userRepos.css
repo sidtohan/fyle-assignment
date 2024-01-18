@@ -78,6 +78,30 @@
     position: relative;
 }
 
+/* Per Page */
+.per-page-holder{
+    grid-column: 2/3;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.25rem;
+    color: #428BCA;
+}
+
+.per-page{
+    background-color: transparent;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    border: 0.1rem solid black;
+    border-radius: 0.25rem;
+    padding: 0.25rem 1rem;
+} 
+
+.per-page-option{
+    font-size: 1.5rem;
+}
+
 /* MEDIA QUERIES*/
 @media screen and (max-width: 768px) {
     .user-repos{

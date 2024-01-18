@@ -119,6 +119,21 @@ const userRepos = async (name, totalRepos) => {
     repoDisplay.classList.remove("loading");
     repoDisplay.removeChild(loader);
 
+    // For per page repositories setting
+    const perPageHolder = document.createElement("div");
+    perPageHolder.classList.add("per-page-holder");
+
+    const perPage = document.createElement("select");
+    perPage.classList.add("per-page");
+    perPage.id = "per-page";
+
+    const perPageLabel = document.createElement("label");
+    perPageLabel.htmlFor = "per-page";
+    perPageLabel.textContent = "Number of repos per page";
+
+    perPageHolder.appendChild(perPageLabel);
+    perPageHolder.appendChild(perPage);
+
     // Update data
     const setNewData = async (newPage) => {
         repoDisplay.innerHTML = ``;
@@ -127,9 +142,34 @@ const userRepos = async (name, totalRepos) => {
         const newRepos = newData.data;
         page = newPage;
         repoDisplay.removeChild(loader);
+        repoDisplay.appendChild(perPageHolder);
         populateRepos(repoDisplay, newRepos, totalPages, setNewData);
     }
 
+    // Set new limit
+    const modifyLimit = async (newLimit) => {
+        limit = newLimit;
+        totalPages = Math.ceil(totalRepos / newLimit);
+        await setNewData(1);
+    }
+
+    // Add option to per page element
+    for(let pp = 10; pp <= 100; pp += 10){
+        const opt = document.createElement("option");
+        opt.classList.add("per-page-option");
+        opt.textContent = pp;
+        opt.value = pp;
+        perPage.appendChild(opt);
+    }
+
+    perPage.onchange = (async (e) => {
+        e.preventDefault();
+        let value = e.target.value;
+        await modifyLimit(value);
+    })
+
+    // Append all elements
+    repoDisplay.appendChild(perPageHolder);
     populateRepos(repoDisplay, repos, totalPages, setNewData);
 }
 
