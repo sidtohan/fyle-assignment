@@ -104,26 +104,33 @@ const populateRepos = (repoDisplay, repos, totalPages, setNewData) => {
     repoDisplay.appendChild(pageNavigation(totalPages, setNewData));
 }
 const userRepos = async (name, totalRepos) => {
+    // Repo Div
+    const repoDisplay = document.querySelector(".user-repos");
+    const loader = document.createElement("div");
+    loader.classList.add('loading');
+    repoDisplay.appendChild(loader);
+
     // Init
     let data = await getPageData(name, page, limit);
     let repos = data.data;
     let totalPages = Math.ceil(totalRepos / limit);
 
-    // Repo Div
-    const repoDisplay = document.createElement("div");
-    repoDisplay.classList.add("user-repos");
+    // Remove loading
+    repoDisplay.classList.remove("loading");
+    repoDisplay.removeChild(loader);
 
     // Update data
     const setNewData = async (newPage) => {
+        repoDisplay.innerHTML = ``;
+        repoDisplay.appendChild(loader);
         const newData = await getPageData(name, newPage, limit);
         const newRepos = newData.data;
-        repoDisplay.innerHTML = ``;
         page = newPage;
+        repoDisplay.removeChild(loader);
         populateRepos(repoDisplay, newRepos, totalPages, setNewData);
     }
 
     populateRepos(repoDisplay, repos, totalPages, setNewData);
-    return repoDisplay;
 }
 
 export default userRepos;

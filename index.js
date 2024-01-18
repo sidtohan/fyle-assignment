@@ -10,12 +10,14 @@ import "/src/styles/userRepos.css"
 
 // Main Component
 const initializeApp = async () => {
-    const root = document.querySelector("#root");
+    const root = document.querySelector(".root");
     const userData = await fetchData("johnpapa");
     const totalRepos = userData.data.public_repos;
     
-    root.appendChild(userInfo(userData));
-    root.appendChild(await userRepos("johnpapa", totalRepos))
+    userInfo(userData);
+    root.classList.remove("loading")
+    
+    await userRepos("johnpapa", totalRepos);
 }
 
 window.onload = initializeApp();

@@ -1,4 +1,5 @@
 .user-repos{
+    position: relative;
     display: grid;
     padding-top: 4rem;
     grid-template-columns: repeat(2,1fr);
@@ -70,6 +71,13 @@
     border: 0.1rem solid #428BCA;
 }
 
+/* Loading */
+.user-repos > .loading{
+    margin: 0 auto;
+    margin-top: 2.5rem;
+    position: relative;
+}
+
 /* MEDIA QUERIES*/
 @media screen and (max-width: 768px) {
     .user-repos{
@@ -77,5 +85,8 @@
         flex-direction: column;
         justify-content: center;
         gap: 2rem;
+    }
+    .user-repos > .loading{
+        position: initial;
     }
 }

@@ -74,12 +74,9 @@ const userData = (data) => {
     return dataDiv;
 }
 const userInfo = ({data}) => {
-    const userInfoDiv = document.createElement("div");
+    const userInfoDiv = document.querySelector(".user-info");
     userInfoDiv.appendChild(imageElement(data.avatar_url, data.html_url));
     userInfoDiv.appendChild(userData(data));
-    userInfoDiv.classList.add("user-info")
-
-    return userInfoDiv;
 }
 
 export default userInfo;
