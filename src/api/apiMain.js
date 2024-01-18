@@ -1,7 +1,7 @@
 import { Octokit } from "@octokit/core";
 
 // API TOKEN with no permissions
-const API_TOKEN = "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";
+const API_TOKEN = (process.env.API_TOKEN)
 const apiAgent = new Octokit({ auth: API_TOKEN });
 
 const getUser = async (name) => {

@@ -1,3 +1,7 @@
+// Images
+import linkIcon from "../assets/linkIcon.png"
+import locationIcon from "../assets/locationIcon.png"
+
 // Element for Image
 const imageElement = (image, url) => {
     const imgDiv = document.createElement("div");
@@ -16,7 +20,7 @@ const imageElement = (image, url) => {
     github.classList.add("user-github-url");
     
     const linkImg = document.createElement("img");
-    linkImg.src = "src/assets/linkIcon.png";
+    linkImg.src = linkIcon;
     linkImg.classList.add("icon");
 
     const linkText = document.createElement("span");
@@ -51,7 +55,7 @@ const userData = (data) => {
     location.classList.add("user-location");
     
     const locImg = document.createElement("img");
-    locImg.src = "src/assets/locationIcon.png";
+    locImg.src = locationIcon;
     locImg.classList.add("icon");
 
     const locTxt = document.createElement("span");

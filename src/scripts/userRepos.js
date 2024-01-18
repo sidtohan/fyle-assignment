@@ -1,3 +1,7 @@
+// Images
+import leftArrow from "../assets/leftArrowIcon.png"
+import rightArrow from "../assets/rightArrowIcon.png"
+
 // Pagination related
 let page = 1;
 let limit = 10;
@@ -40,7 +44,7 @@ const pageNavigation = (totalPages, setNewData) => {
 
     const leftButton = document.createElement("button");
     const leftArrowIcon = document.createElement("img");
-    leftArrowIcon.src = "src/assets/leftArrowIcon.png";
+    leftArrowIcon.src = leftArrow;
     leftArrowIcon.classList.add("icon");
     leftButton.classList.add("repo-navigation-button");
     leftButton.classList.add("left-nav");
@@ -54,7 +58,7 @@ const pageNavigation = (totalPages, setNewData) => {
 
     const rightButton = document.createElement("button");
     const rightArrowIcon = document.createElement("img");
-    rightArrowIcon.src = "src/assets/rightArrowIcon.png";
+    rightArrowIcon.src = rightArrow;
     rightArrowIcon.classList.add("icon");
     rightButton.classList.add("repo-navigation-button");
     rightButton.appendChild(rightArrowIcon);
@@ -109,6 +113,7 @@ const userRepos = async (name, totalRepos) => {
     const loader = document.createElement("div");
     loader.classList.add('loading');
     repoDisplay.appendChild(loader);
+    console.log("hello");
 
     // Init
     let data = await getPageData(name, page, limit);
