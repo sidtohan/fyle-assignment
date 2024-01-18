@@ -42,3 +42,18 @@
     gap: 0.5rem;
     align-items: center;
 }
+
+/* MEDIA QUERIES*/
+@media screen and (max-width: 768px) {
+    .user-info{
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .user-image-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

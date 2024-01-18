@@ -69,7 +69,13 @@ const pageNavigation = (totalPages, setNewData) => {
 
     navigationDiv.appendChild(leftButton);
 
-    for(let pg = 1; pg <= totalPages; ++pg){
+    let startingPage = Math.max(1, page - 4);
+    let endingPage = Math.min(totalPages, page + 8 - (page - startingPage + 1));
+    if(endingPage === totalPages){
+        // decrease the starting amount some
+        startingPage = Math.max(1, page - 7 + totalPages - page);
+    }
+    for(let pg = startingPage; pg <= endingPage; ++pg){
         const pageButton = document.createElement("button");
         pageButton.classList.add("repo-navigation-button");
         if(pg == page){

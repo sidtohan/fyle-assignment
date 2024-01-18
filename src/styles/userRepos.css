@@ -64,3 +64,13 @@
     color: white;
     border: 0.1rem solid #428BCA;
 }
+
+/* MEDIA QUERIES*/
+@media screen and (max-width: 768px) {
+    .user-repos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+}

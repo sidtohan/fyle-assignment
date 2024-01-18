@@ -20,7 +20,7 @@ const imageElement = (image, url) => {
     linkImg.classList.add("icon");
 
     const linkText = document.createElement("span");
-    linkText.innerHTML = `Twitter: <a href="${url}"}>${url}</a>`;
+    linkText.innerHTML = `<a href="${url}"}>${url}</a>`;
     
     github.appendChild(linkImg);
     github.appendChild(linkText);
